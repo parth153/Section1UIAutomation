@@ -1,0 +1,30 @@
+package utilities;
+
+import java.util.HashMap;
+import java.util.List;
+
+public class CompareStrings {
+	
+	public static boolean compareLostofStrings(List<String> first, List<String> second)
+	{
+		boolean result = true;
+		if (first==null && second==null) return true;
+	    if (first!=null && second==null) return false;
+	    if (first==null && second!=null) return false;
+
+	    if ( first.size()!=second.size() ) return false;
+
+	    HashMap<String, String> map = new HashMap<String, String>();
+	    for (String str : first) {
+	        map.put(str, str);
+	    }
+	    for (String str : second) {
+	        if ( ! map.containsKey(str) ) {
+	            result=false;
+	        }
+	    }
+	    
+	    return result;
+	}
+
+}

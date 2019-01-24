@@ -1,0 +1,10 @@
+package utilities;
+
+public class ReadCommandLineArguments {
+	
+	public static void readCMDArguments()
+	{
+		String browserName = System.getProperty("browser");
+	}
+
+}

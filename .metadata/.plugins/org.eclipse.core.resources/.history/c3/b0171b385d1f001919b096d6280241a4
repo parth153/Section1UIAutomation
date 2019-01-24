@@ -1,0 +1,179 @@
+package pages;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import utilities.GenerateRandomNumbers;
+
+public class FundsCompare {
+	
+	//local driver to work with elements
+	WebDriver driver = null;
+	Set<Integer> pickedNums = null;
+	List<WebElement> addFundsButtons = null;
+	List<String> identifiersSelectedFunds = null;
+	
+	//constructor to initialize driver
+	public FundsCompare(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	int numfundscmp = 4;
+	
+	@FindBy(id="addButton0")
+	WebElement addFundButtonFirst;
+	
+	@FindBy(id="addButton1")
+	WebElement addFundButtonSecond;
+	
+	@FindBy(id="addButton2")
+	WebElement addFundButtonThird;
+	
+	@FindBy(id="addButton3")
+	WebElement addFundButtonFourth;
+	
+	@FindBy(id="addFund")
+	WebElement addFundButton;
+	
+	@FindBy(xpath="//*[@id=\"vanguardfunds-assetclass-filtering-checkboxes\"]/input[2]")
+	WebElement addFundListFirst;
+	
+	@FindBy(xpath="//*[@id=\"vanguard_tab\"]/div/table/tbody")
+	WebElement tableOfFunds;
+	
+	@FindBy(id="compareFundBtn")
+	WebElement compareFundsButton;
+	
+	@FindBy(id="compareTableResults")
+	WebElement compareTableResults;
+	
+	public void addButtonFirstClick()
+	{
+		WebDriverWait wait = new WebDriverWait(driver,5);
+		wait.until(ExpectedConditions.visibilityOf(addFundButtonFirst));
+		addFundButtonFirst.click();
+	}
+	
+	public void addFundButtonClick()
+	{
+		WebDriverWait wait = new WebDriverWait(driver,5);
+		wait.until(ExpectedConditions.visibilityOf(addFundButton));
+		addFundButton.click();
+	}
+	
+	public void compareFundsButtonClick()
+	{
+		WebDriverWait wait = new WebDriverWait(driver,5);
+		wait.until(ExpectedConditions.visibilityOf(compareFundsButton));
+		
+		compareFundsButton.click();
+	}
+	
+	public void selectRetailRadioButton()
+	{
+		WebDriverWait wait = new WebDriverWait(driver,5);
+		wait.until(ExpectedConditions.visibilityOf(addFundListFirst));
+		addFundListFirst.click();
+	}
+
+	public void selectFourFundsFromList() {
+		
+		WebDriverWait wait = new WebDriverWait(driver,5);
+		identifiersSelectedFunds = new ArrayList<String>();
+		wait.until(ExpectedConditions.visibilityOf(tableOfFunds));
+		List<WebElement> fundlist = tableOfFunds.findElements(By.tagName("tr"));
+		
+		
+		pickedNums = GenerateRandomNumbers.generateUniqueRandomNumbers(numfundscmp);
+		
+		for(Integer item : pickedNums)
+		{
+			List<WebElement> rowData = fundlist.get(item).findElements(By.tagName("td"));
+			identifiersSelectedFunds.add(rowData.get(2).getText());
+			fundlist.get(item).findElement(By.tagName("input")).click();
+		}
+		
+		System.out.println("Selected Funds are");
+		for(String iden : identifiersSelectedFunds)
+			System.out.println(iden);
+		
+	}
+	
+	
+	
+	public boolean verifyResult()
+	{
+		boolean result = true;
+		WebDriverWait wait = new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.visibilityOf(compareTableResults));		
+		List<WebElement> resultlist = compareTableResults.findElements(By.tagName("tr"));
+		List<String> identifiersDisplayedFunds = new ArrayList<String>();
+		
+		for(int index = 1; index <= 18; index++)
+		{
+			List<WebElement> rowdata = resultlist.get(index).findElements(By.tagName("td"));
+			for(WebElement coldata : rowdata)
+			{
+				if(coldata.getText().isEmpty())
+					result = false;
+				if(index == 3)
+					identifiersDisplayedFunds.add(coldata.getText());
+			}
+		}
+		
+		System.out.println("Displayed Funds are");
+		for(String iden : identifiersDisplayedFunds)
+			System.out.println(iden);
+		return result;
+	}
+
+	public void initializeAddFundsButtons()
+	{
+		addFundsButtons = new ArrayList<WebElement>();
+		
+		addFundsButtons.add(addFundButtonFirst);
+		addFundsButtons.add(addFundButtonSecond);
+		addFundsButtons.add(addFundButtonThird);
+		addFundsButtons.add(addFundButtonFourth);
+	}
+	
+	public void PerformScenarioStep() throws InterruptedException {
+		
+		pickedNums = GenerateRandomNumbers.generateUniqueRandomNumbers(numfundscmp);
+		List<WebElement> fundlist = null;
+		initializeAddFundsButtons();
+		int index = 0;
+		
+		for(int item : pickedNums)
+		{
+			WebDriverWait wait = new WebDriverWait(driver,10);
+			wait.until(ExpectedConditions.visibilityOf(addFundsButtons.get(index)));
+			addFundsButtons.get(index).click();
+			
+			selectRetailRadioButton();
+			
+			wait.until(ExpectedConditions.visibilityOf(tableOfFunds));
+			fundlist = tableOfFunds.findElements(By.tagName("tr"));
+			
+			fundlist.get(item).findElement(By.tagName("input")).click();
+			
+			if(index == 0)
+				addFundButtonClick();
+			else
+				compareFundsButtonClick();
+			
+			index++;
+			Thread.sleep(3000);
+		}
+		
+	}
+}

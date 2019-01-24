@@ -1,0 +1,14 @@
+package hooks;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import Steps.CompareRetailFundsSteps;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+
+public class CucumberBindings {
+	
+
+	 
+}

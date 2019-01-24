@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestRunner" project="CompareRetailFunds" tests="8" started="8" failures="2" errors="0" ignored="0">
+  <testsuite name="runner.TestRunner" time="83.757">
+    <testsuite name="Feature: Compare Retail Funds" time="83.757">
+      <testsuite name="Scenario: Select all four funds from one button click and be able to Compare Retail Funds" time="33.485">
+        <testcase name="Given I am a Vanguard User and on HomePage" classname="Scenario: Select all four funds from one button click and be able to Compare Retail Funds" time="1.729"/>
+        <testcase name="When I Navigate to Individual &amp; SMSF Investors" classname="Scenario: Select all four funds from one button click and be able to Compare Retail Funds" time="2.318"/>
+        <testcase name="And Click on Fund Compare" classname="Scenario: Select all four funds from one button click and be able to Compare Retail Funds" time="28.545"/>
+        <testcase name="Then I should be able to compare 4 Retail funds by clicking one Add Funds button" classname="Scenario: Select all four funds from one button click and be able to Compare Retail Funds" time="0.893"/>
+      </testsuite>
+      <testsuite name="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="44.143" incomplete="true">
+        <failure>java.lang.AssertionError: expected:&lt;true&gt; but was:&lt;false&gt;&#13;
+	at org.junit.Assert.fail(Assert.java:88)&#13;
+	at org.junit.Assert.failNotEquals(Assert.java:834)&#13;
+	at org.junit.Assert.assertEquals(Assert.java:118)&#13;
+	at org.junit.Assert.assertEquals(Assert.java:144)&#13;
+	at pages.FundsCompare.verifyResult(FundsCompare.java:136)&#13;
+	at steps.CompareRetailFundsSteps.i_should_be_able_to_compare_4_Retail_funds_by_clicing_all_add_funds_buttons(CompareRetailFundsSteps.java:52)&#13;
+	at ✽.Then I should be able to compare 4 Retail funds by clicking all Add Funds buttons(CompareRetailFunds.feature:19)&#13;
+&#13;
+</failure>
+        <testcase name="Given I am a Vanguard User and on HomePage" classname="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="3.487"/>
+        <testcase name="When I Navigate to Individual &amp; SMSF Investors" classname="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="2.357"/>
+        <testcase name="And Click on Fund Compare" classname="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="38.296"/>
+        <testcase name="Then I should be able to compare 4 Retail funds by clicking all Add Funds buttons" classname="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="0.002">
+          <failure>java.lang.AssertionError: expected:&lt;true&gt; but was:&lt;false&gt;&#13;
+	at org.junit.Assert.fail(Assert.java:88)&#13;
+	at org.junit.Assert.failNotEquals(Assert.java:834)&#13;
+	at org.junit.Assert.assertEquals(Assert.java:118)&#13;
+	at org.junit.Assert.assertEquals(Assert.java:144)&#13;
+	at pages.FundsCompare.verifyResult(FundsCompare.java:136)&#13;
+	at steps.CompareRetailFundsSteps.i_should_be_able_to_compare_4_Retail_funds_by_clicing_all_add_funds_buttons(CompareRetailFundsSteps.java:52)&#13;
+	at ✽.Then I should be able to compare 4 Retail funds by clicking all Add Funds buttons(CompareRetailFunds.feature:19)&#13;
+&#13;
+</failure>
+        </testcase>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testrun>

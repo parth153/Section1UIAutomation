@@ -1,0 +1,23 @@
+package Pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+import Steps.CompareRetailFundsSteps;
+
+public class HomePage {
+	
+	public WebDriver driver = null;
+	
+	public HomePage(WebDriver driver) {
+		PageFactory.initElements(driver, this.driver);
+	}
+
+	public void navigateTo(String url) {
+		// TODO Auto-generated method stub
+		driver.get(url);
+	}
+	
+		
+
+}

@@ -1,0 +1,9 @@
+steps\CompareRetailFundsSteps.class
+utilities\ReadCommandLineArguments.class
+pages\FundsCompare.class
+pages\InvestmentsPage.class
+utilities\CompareStrings.class
+hooks\CucumberBindings.class
+pages\HomePage.class
+utilities\GenerateRandomNumbers.class
+runner\TestRunner.class

@@ -1,0 +1,71 @@
+package pages;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.IntStream;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import utilities.GenerateRandomNumbers;
+
+public class FundsCompare {
+	
+	//local driver to work with elements
+	WebDriver driver = null;
+	
+	//constructor to initialize driver
+	public FundsCompare(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
+	@FindBy(id="addButton0")
+	WebElement addFundButtonFirst;
+	
+	@FindBy(xpath="//*[@id=\"vanguardfunds-assetclass-filtering-checkboxes\"]/input[2]")
+	WebElement addFundListFirst;
+	
+	@FindBy(xpath="//*[@id=\"vanguard_tab\"]/div/table/tbody")
+	WebElement tableOfFunds;
+	
+	public void addButtonFirstClick()
+	{
+		WebDriverWait wait = new WebDriverWait(driver,2);
+		wait.until(ExpectedConditions.visibilityOf(addFundButtonFirst));
+		addFundButtonFirst.click();
+	}
+	
+	public void selectRetailRadioButton()
+	{
+		WebDriverWait wait = new WebDriverWait(driver,2);
+		wait.until(ExpectedConditions.visibilityOf(addFundListFirst));
+		addFundListFirst.click();
+	}
+
+	public void selectFourFundsFromList() {
+		
+		WebDriverWait wait = new WebDriverWait(driver,2);
+		wait.until(ExpectedConditions.visibilityOf(tableOfFunds));
+		List<WebElement> fundlist = tableOfFunds.findElements(By.tagName("tr"));
+		int numfundscmp = 4;
+		
+		Set<Integer> pickedNums = GenerateRandomNumbers.generateUniqueRandomNumbers(numfundscmp);
+		
+		for(Integer item : pickedNums)
+		{
+			System.out.println(item);
+			fundlist.get(item).findElement(By.tagName("input")).click();
+		}
+		
+		
+	}
+}

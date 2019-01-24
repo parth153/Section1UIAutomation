@@ -1,0 +1,34 @@
+package Steps;
+
+import Hooks.CucumberBindings;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
+import cucumber.api.java.en.Then;
+
+public class CompareRetailFundsSteps {
+	
+	HomePage 
+	@Given("^I am a Vanguard User and on HomePage$")
+	public void i_am_a_Vanguard_User_and_on_HomePage() throws Throwable {
+	   
+	}
+
+	@When("^I Navigate to Individual & SMSF Investors$")
+	public void i_Navigate_to_Individual_SMSF_Investors() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+		System.out.println("Parth");
+	}
+
+	@When("^Click on Fund Compare$")
+	public void click_on_Fund_Compare() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+		System.out.println("Parth");
+	}
+
+	@Then("^I shold to be able to compare four Retail funds using the Product Facts$")
+	public void i_shold_to_be_able_to_compare_four_Retail_funds_using_the_Product_Facts() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+		System.out.println("Parth");
+	}
+}
+

@@ -1,0 +1,41 @@
+package steps;
+
+import org.openqa.selenium.WebDriver;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
+import pages.HomePage;
+import cucumber.api.java.en.Then;
+
+public class CompareRetailFundsSteps {
+	
+	public static WebDriver driver = null;
+	public HomePage home = null;
+	
+	@Given("^I am a Vanguard User and on HomePage$")
+	public void i_am_a_Vanguard_User_and_on_HomePage() throws Throwable {
+		home = new HomePage(driver);
+		String url = "https://www.vanguardinvestments.com.au/au/portal/homepage.jsp";
+		driver.get(url);
+	}
+
+	@When("^I Navigate to Individual & SMSF Investors$")
+	public void i_Navigate_to_Individual_SMSF_Investors() throws Throwable {
+	    
+		home.clickIndividualAndSMSFInverstorsLink();
+		Thread.sleep(5000);
+	}
+
+	@When("^Click on Fund Compare$")
+	public void click_on_Fund_Compare() throws Throwable {
+	    
+		System.out.println("Parth");
+	}
+
+	@Then("^I shold to be able to compare four Retail funds using the Product Facts$")
+	public void i_shold_to_be_able_to_compare_four_Retail_funds_using_the_Product_Facts() throws Throwable {
+	    
+		System.out.println("Parth");
+	}
+}
+

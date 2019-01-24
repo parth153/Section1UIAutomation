@@ -1,0 +1,17 @@
+package Pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+import Hooks.CucumberBindings;
+
+public class HomePage extends CucumberBindings{
+	
+	public WebDriver driver = null;
+	
+	public HomePage() {
+		PageFactory.initElements(CucumberBindings.driver, this.driver);
+	}
+	
+
+}

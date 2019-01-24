@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestRunner" project="CompareRetailFunds" tests="8" started="8" failures="0" errors="0" ignored="1">
+  <testsuite name="runner.TestRunner" time="35.069">
+    <testsuite name="Feature: Compare Retail Funds" time="35.069">
+      <testsuite name="Scenario: Select all four funds from one button click and be able to Compare Retail Funds" time="5.626" incomplete="true">
+        <skipped/>
+        <testcase name="Given I am a Vanguard User and on HomePage" classname="Scenario: Select all four funds from one button click and be able to Compare Retail Funds" time="2.4"/>
+        <testcase name="When I Navigate to Individual &amp; SMSF Investors" classname="Scenario: Select all four funds from one button click and be able to Compare Retail Funds" time="2.302"/>
+        <testcase name="And Click on Fund Compare" classname="Scenario: Select all four funds from one button click and be able to Compare Retail Funds" time="0.002"/>
+        <testcase name="Then I should to be able to compare 4 Retail funds by clicking one Add Funds button" classname="Scenario: Select all four funds from one button click and be able to Compare Retail Funds" time="0.922" ignored="true"/>
+      </testsuite>
+      <testsuite name="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="23.238">
+        <testcase name="Given I am a Vanguard User and on HomePage" classname="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="1.43"/>
+        <testcase name="When I Navigate to Individual &amp; SMSF Investors" classname="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="2.378"/>
+        <testcase name="And Click on Fund Compare" classname="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="18.372"/>
+        <testcase name="Then I should to be able to compare 4 Retail funds by clicking all Add Funds buttons" classname="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="1.058"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testrun>

@@ -1,0 +1,11 @@
+#Author: parthparikhce@gmail.com
+#Feature File for comparing four retail funds
+
+Feature: Comparing Four Retail Funds
+  I want to be able to compare 4 Retail funds using the “Product Facts”
+
+Scenario: CompareRetailFunds
+    Given I am a Vanguard User and on HomePage
+    When I Navigate to Individual & SMSF Investors
+    And Click on Fund Compare
+   	Then I shold to be able to compare 4 Retail funds using the Product Facts

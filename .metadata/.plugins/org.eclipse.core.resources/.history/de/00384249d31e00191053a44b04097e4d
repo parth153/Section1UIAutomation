@@ -1,0 +1,9 @@
+package Pages;
+
+import Hooks.CucumberBindings;
+
+public class HomePage extends CucumberBindings{
+	
+	
+
+}

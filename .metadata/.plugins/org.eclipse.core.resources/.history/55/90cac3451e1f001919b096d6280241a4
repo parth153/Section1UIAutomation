@@ -1,0 +1,6 @@
+package utilities;
+
+public class GlobalConfigurations {
+
+	private final static int NUMBER_MILLISECONDS_IN_SECOND = 1000;
+}

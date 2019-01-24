@@ -1,0 +1,43 @@
+package hooks;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import steps.CompareRetailFundsSteps;
+
+public class CucumberBindings {
+	
+	@Before
+	public void initializeBrowser()
+	{
+		if(System.getProperty("browser").equalsIgnoreCase("chrome"))
+		{
+			System.setProperty("webdriver.chrome.driver", "src/test/resources/Drivers/chromedriver.exe");
+			CompareRetailFundsSteps.driver = new ChromeDriver();
+		}
+		else if(System.getProperty("browser").equalsIgnoreCase("firefox"))
+		{
+			System.setProperty("webdriver.gecko.driver", "src/test/resources/Drivers/geckodriver.exe");
+			CompareRetailFundsSteps.driver = new FirefoxDriver();
+		}
+		else if(System.getProperty("browser").isEmpty())
+		{
+			System.setProperty("webdriver.chrome.driver", "src/test/resources/Drivers/chromedriver.exe");
+			CompareRetailFundsSteps.driver = new ChromeDriver();
+		}
+			
+		CompareRetailFundsSteps.driver.manage().window().maximize();
+		CompareRetailFundsSteps.driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+		
+	}
+	
+	@After
+	public void closeBrowser()
+	{
+		CompareRetailFundsSteps.driver.quit();
+	}
+	 
+}

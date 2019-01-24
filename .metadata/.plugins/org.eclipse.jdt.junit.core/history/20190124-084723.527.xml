@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestRunner" project="CompareRetailFunds" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="runner.TestRunner" time="30.8">
+    <testsuite name="Feature: Compare Retail Funds" time="30.8">
+      <testsuite name="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="30.8">
+        <testcase name="Given I am a Vanguard User and on HomePage" classname="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="2.002"/>
+        <testcase name="When I Navigate to Individual &amp; SMSF Investors" classname="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="2.325"/>
+        <testcase name="And Click on Fund Compare" classname="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="25.692"/>
+        <testcase name="Then I should to be able to compare 4 Retail funds by clicking all Add Funds buttons" classname="Scenario: Select fund from each Add Funds button click and be able to Compare Retail Funds" time="0.781"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testrun>

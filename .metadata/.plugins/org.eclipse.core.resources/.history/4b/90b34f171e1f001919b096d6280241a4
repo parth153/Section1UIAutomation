@@ -1,0 +1,8 @@
+package utilities;
+
+import java.util.concurrent.TimeUnit;
+
+public class GlobalConfigurations {
+
+	public static TimeUnit time = TimeUnit.SECONDS(5);
+}

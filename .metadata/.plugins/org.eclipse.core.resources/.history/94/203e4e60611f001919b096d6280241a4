@@ -1,0 +1,64 @@
+package hooks;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import steps.CompareRetailFundsSteps;
+import utilities.ReadCommandLineArguments;
+
+
+//Cucumber feature binding file to perform setup and tear down
+public class CucumberBindings {
+	
+	
+	@Before
+	public void initializeBrowser()
+	{
+		//Reading command line arguments through Maven
+		ReadCommandLineArguments.readCMDArguments();
+		
+		if(ReadCommandLineArguments.browserName == null)
+			ReadCommandLineArguments.browserName = "chrome";
+		
+		if(ReadCommandLineArguments.browserName.equalsIgnoreCase("chrome"))
+		{
+			ChromeOptions options = new ChromeOptions();
+			options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+			System.setProperty("webdriver.chrome.driver", "src/test/resources/Drivers/chromedriver.exe");
+			CompareRetailFundsSteps.driver = new ChromeDriver(options);
+		}
+		else if(ReadCommandLineArguments.browserName.equalsIgnoreCase("firefox"))
+		{
+			System.setProperty("webdriver.gecko.driver", "src/test/resources/Drivers/geckodriver.exe");
+			CompareRetailFundsSteps.driver = new FirefoxDriver();
+			
+		}
+		else
+		{
+			System.setProperty("webdriver.chrome.driver", "src/test/resources/Drivers/chromedriver.exe");
+			CompareRetailFundsSteps.driver = new ChromeDriver();
+			
+		}
+			
+		CompareRetailFundsSteps.driver.manage().window().maximize();
+				
+		if(ReadCommandLineArguments.url == null)
+			ReadCommandLineArguments.url = "https://www.vanguardinvestments.com.au/au/portal/homepage.jsp";
+		
+		CompareRetailFundsSteps.driver.get(ReadCommandLineArguments.url);
+		CompareRetailFundsSteps.driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+		
+	}
+	
+	@After
+	public void closeBrowser()
+	{
+		CompareRetailFundsSteps.driver.quit();
+	}
+	 
+}
